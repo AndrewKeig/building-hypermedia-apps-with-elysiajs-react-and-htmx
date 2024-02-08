@@ -1,0 +1,14 @@
+{
+  "name": "building-hypermedia-applications-with-htmx-react-and-bun",
+  "version": "0.0.1",
+  "scripts": {
+    "start": "bun --watch src/index.ts"
+  },
+  "dependencies": {
+    "@elysiajs/html": "^0.8.0",
+    "elysia": "latest"
+  },
+  "devDependencies": {
+    "bun-types": "latest"
+  }
+}
