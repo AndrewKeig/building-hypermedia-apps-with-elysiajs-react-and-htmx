@@ -21,11 +21,11 @@ export function Character({ name, height, mass, hair_color, skin_color, eye_colo
   return (
     <div class="mt-4">
       <h1 class="mb-4 text-4xl font-bold" safe>{name}</h1>
-      <div>Height: {height}</div>
-      <div>Mass {mass}</div>
+      <div>Eye Color: {eye_color}</div>
+      <div safe>Height: {height}</div>
+      <div safe>Mass {mass}</div>
       <div safe>Hair Color: {hair_color}</div>
       <div safe>Skin Color: {skin_color}</div>
-      <div safe>Eye Color: {eye_color}</div>
       <div safe>Birth Year: {birth_year}</div>
       <div safe>Gender: {gender}</div>
     </div>

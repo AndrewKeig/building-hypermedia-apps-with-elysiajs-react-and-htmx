@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script src="https://unpkg.com/htmx.org"></script>
+    <script src="https://unpkg.com/htmx.org/dist/ext/client-side-templates.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/nunjucks@3.2.4/browser/nunjucks.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body>
+    <div class="m-8" >
+      <div hx-ext="client-side-templates">
+        <h1 class="text-8xl font-bold">
+          These are not the droids you are looking for.
+        </h1>
+        <input
+          class="mt-8 p-4 text-6xl font-bold text-blue-700 border-2 border-gray-100 rounded-md"
+          autofocus
+          type="search"
+          name="search"
+          placeholder="Search..."
+          hx-indicator=".htmx-indicator"
+          hx-request='{"noHeaders": true}'
+          hx-include="[name='q']"
+          hx-get="https://swapi.dev/api/people/"
+          hx-params="*"
+          hx-trigger="search, keyup changed delay:500ms"
+          hx-target="#results"
+          nunjucks-template="sw-template"
+        >
+        <div hx-get="https://swapi.dev/api/people/" hx-trigger="revealed">
+          <img width="64" id="spinner" class="htmx-indicator" src="/loading.svg"/>
+        </div>
+        <template id="sw-template">
+          <div class="mt-4">
+            <h1 class="mb-4"> Found {{ count }} results.</h1>
+            {% for item in results %}
+            <div class="mt-4">
+              <h1 class="mb-4 text-4xl font-bold">{{ item.name }}</a></h1>
+              <div>Height: {{ item.height }}</a></div>
+              <div>Mass {{ item.mass }}</div>
+              <div>Hair Color {{ item.hair_color }}</div>
+              <div>Skin Color {{ item.skin_color }}</div>
+              <div>Eye Color {{ item.eye_color }}</div>
+              <div>Birth Year {{ item.birth_year }}</div>
+              <div>Gender {{ item.gender }}</div>
+            </div>
+            {% endfor %}
+          </div>
+        </template>
+        <div id="results"></div>
+      </div>
+    </div>
+  </body>
+</html>
