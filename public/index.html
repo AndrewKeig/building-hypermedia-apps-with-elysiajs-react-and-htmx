@@ -19,15 +19,13 @@
           name="search"
           placeholder="Search..."
           hx-indicator=".htmx-indicator"
-          hx-request='{"noHeaders": true}'
-          hx-include="[name='q']"
           hx-get="https://swapi.dev/api/people/"
-          hx-params="*"
           hx-trigger="search, keyup changed delay:500ms"
           hx-target="#results"
+          hx-request='{"noHeaders": true}'
           nunjucks-template="sw-template"
         >
-        <div hx-get="https://swapi.dev/api/people/" hx-trigger="revealed">
+        <div hx-trigger="revealed">
           <img width="64" id="spinner" class="htmx-indicator" src="/loading.svg"/>
         </div>
         <template id="sw-template">
